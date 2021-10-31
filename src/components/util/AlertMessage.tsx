@@ -2,7 +2,8 @@ import React from "react";
 import {UIMessage, UIMessageType} from "../../main/types/UIMessage";
 
 type MessageProps = {
-    message: UIMessage
+    message: string,
+    messageType: UIMessageType
     onClose(): void
 }
 
@@ -10,7 +11,7 @@ class AlertMessage extends React.Component<MessageProps, any> {
     render() {
         let messageClass
         if (this.props.message != null) {
-            switch (this.props.message.messageType) {
+            switch (this.props.messageType) {
                 case UIMessageType.ERROR:
                     messageClass = 'alert-error'
                     break

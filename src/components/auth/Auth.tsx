@@ -34,11 +34,12 @@ class Auth extends React.Component<any, AuthState> {
     }
 
     render() {
-        return <div className="tab-pane fade show active" id="auth" role="tabpanel" aria-labelledby="home-tab">
+        return <div className="tab-pane fade show active my-3" id="auth" role="tabpanel" aria-labelledby="home-tab">
             {this.state.notificationMessage != null &&
-            <AlertMessage message={this.state.notificationMessage} onClose={this.RemoveMessage}/>
+            <AlertMessage message={this.state.notificationMessage.message}
+                          messageType={this.state.notificationMessage.messageType} onClose={this.RemoveMessage}/>
             }
-            <div className="my-3">
+            <div>
                 <label htmlFor="username-or-email" className="form-label">Username or email</label>
                 <ValidateInput
                     type="text"
@@ -93,6 +94,7 @@ class Auth extends React.Component<any, AuthState> {
                     } finally {
                         this.setState({
                             loginProcessing: false,
+                            notificationMessage: loginResult
                         })
                     }
                 })

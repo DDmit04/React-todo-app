@@ -41,7 +41,8 @@ class GlobalErrorsBoundary extends React.Component<any, GlobalErrorsBoundaryStat
                 message: error.message,
                 messageType: UIMessageType.ERROR
             }
-            return <AlertMessage key={error.id} message={message} onClose={() => this.RemoveMessage(error.id)}/>
+            return <AlertMessage key={error.id} message={message.message} messageType={message.messageType}
+                                 onClose={() => this.RemoveMessage(error.id)}/>
         })
         return <>
             {errorBlock}

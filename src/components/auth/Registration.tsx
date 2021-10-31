@@ -46,11 +46,12 @@ class Registration extends React.Component<any, RegistrationState> {
     }
 
     render() {
-        return <div className="tab-pane fade" id="register" role="tabpanel" aria-labelledby="contact-tab">
+        return <div className="tab-pane fade my-3" id="register" role="tabpanel" aria-labelledby="contact-tab">
             {this.state.notificationMessage != null &&
-            <AlertMessage message={this.state.notificationMessage} onClose={this.RemoveMessage}/>
+            <AlertMessage message={this.state.notificationMessage.message}
+                          messageType={this.state.notificationMessage.messageType} onClose={this.RemoveMessage}/>
             }
-            <div className="my-3">
+            <div>
                 <label htmlFor="new-email" className="form-label">Email address</label>
                 <ValidateInput
                     type="text"

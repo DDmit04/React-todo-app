@@ -1,11 +1,14 @@
-export enum UIMessageType {
+enum UIMessageType {
     INFO,
     ERROR,
     WARNING,
     SUCCESS
 }
 
-export type UIMessage = {
+type UIMessage = {
     message: string,
     messageType: UIMessageType
 }
+
+export type {UIMessage}
+export {UIMessageType}

@@ -33,7 +33,7 @@ class App extends React.Component<any, AppState> {
 
     async componentDidMount() {
         let user = await this.LoadUser()
-        if(user != null) {
+        if (user != null) {
             this.setState({
                 currentUser: user
             }, async () => {
@@ -55,7 +55,10 @@ class App extends React.Component<any, AppState> {
             user: this.state.currentUser,
             logoutUser: async () => {
                 await SignOutUser()
-                this.setState({currentUser: null})
+                this.setState({
+                    currentUser: null,
+                    tasks: []
+                })
             },
             loginUser: async (usernameOrEmail: string, password: string) => {
                 let user = await AuthUser(usernameOrEmail, password)
@@ -126,7 +129,7 @@ class App extends React.Component<any, AppState> {
 
     LoadTasks = async (): Promise<Task[]> => {
         let loadResult: Task[] = await GetTasks()
-        if(loadResult == null) {
+        if (loadResult == null) {
             loadResult = []
         }
         return loadResult
